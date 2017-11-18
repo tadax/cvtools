@@ -2,5 +2,5 @@
 
 ## [Mirror Padding](./mirror_padding/)
 
-![](./mirror_padding/data/result_1.jpg)
+![](./mirror_padding/samples/result_1.jpg)
 
