@@ -2,11 +2,11 @@
 
 ## Example
 
-![](samples/result_1.jpg)
+![](results/result_1.jpg)
 
-![](samples/result_2.jpg)
+![](results/result_2.jpg)
 
-![](samples/result_3.jpg)
+![](results/result_3.jpg)
 
 
 ## How to Use

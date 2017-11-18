@@ -35,8 +35,6 @@ def test_mirror_padding(path):
 
         result = np.concatenate((block1, img, block1,  mirror, block1, detected, block1), 1)
         result = np.concatenate((block2, result, block2), 0)
-        cv2.imshow('img', result)
-        cv2.waitKey(0)
 
         filename = path.replace('sample', 'result')
         cv2.imwrite(filename, result)
@@ -45,6 +43,6 @@ def test_mirror_padding(path):
 
 
 if __name__ == '__main__':
-    for path in ['./samples/sample_1.jpg', './samples/sample_2.jpg', './samples/sample_3.jpg']:
+    for path in ['./results/sample_1.jpg', './results/sample_2.jpg', './results/sample_3.jpg']:
         test_mirror_padding(path)
     
