@@ -3,7 +3,7 @@ import cv2
 
 def random_brightness(img, gamma=None):
     if gamma is None:
-        gamma = max(np.random.normal(1.0, 0.5), 0.5)
+        gamma = np.random.rand() * 6 + 0.1
     gf = [[255 * pow(i/255, 1/gamma)] for i in range(256)]
     table = np.reshape(gf, (256, -1))
     img = cv2.LUT(img, table)
