@@ -12,6 +12,11 @@
 
 ![](results/random_brightness.jpg)
 
+## Random Blurring
+
+![](results/random_blurring.jpg)
+
 ## Random Cropping
 
 ![](results/random_cropping.jpg)
+
