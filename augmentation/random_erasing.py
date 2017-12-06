@@ -17,6 +17,7 @@ def random_erasing(img, p=0.5):
         x = np.random.randint(0, img_w - area_w + 1)
         y = np.random.randint(0, img_h - area_h + 1)
         img[y:y+area_h, x:x+area_w] = np.random.randint(0, 256)
+        #img[y:y+area_h, x:x+area_w, :] = np.random.randint(0, 256, (1, 3))
         return img
 
 
