@@ -12,4 +12,6 @@
 
 ![](results/random_brightness.jpg)
 
+## Random Cropping
 
+![](results/random_cropping.jpg)
