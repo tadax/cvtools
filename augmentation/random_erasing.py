@@ -1,9 +1,7 @@
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
 
 def random_erasing(img, p=0.5):
-    #img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     if np.random.uniform() > p:
         return img
 
