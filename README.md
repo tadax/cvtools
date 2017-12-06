@@ -1,6 +1,6 @@
 # Image Processor
 
-## [Mirror Padding](./mirror_padding/)
+## - [Image Augmentation](./augmentation/)
 
-![](./mirror_padding/results/result_1.jpg)
+## - [Mirror Padding](./mirror_padding/)
 
