@@ -7,6 +7,7 @@ def random_brightness(img, gamma=None):
     gf = [[255 * pow(i/255, 1/gamma)] for i in range(256)]
     table = np.reshape(gf, (256, -1))
     img = cv2.LUT(img, table)
+    img = np.asarray(img, dtype=np.uint8)
     return img
 
 if __name__ == "__main__":

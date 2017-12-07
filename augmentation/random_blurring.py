@@ -7,8 +7,9 @@ def random_blurring(img, kernel_size):
 
 if __name__ == "__main__":
     img = cv2.imread('test.jpg')
-    augmented = [random_blurring(np.copy(img), kernel_size=k) for k in np.arange(1, 21, 1)]
     h, w = img.shape[:2]
+    s = int(min(h, w) / 20)
+    augmented = [random_blurring(np.copy(img), kernel_size=k) for k in np.arange(1, s)]
     margin = 2
     for i in range(4):
         for j in range(5):
