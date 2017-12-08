@@ -1,4 +1,4 @@
-# Mirror Padding
+# Affine Transformation
 
 ## Example
 
@@ -13,11 +13,10 @@
 
 ```
 $ python
->>> from mp import MirrorPadding
+>>> from affine import Affine
 >>> import cv2
 >>> img = cv2.imread('data/sample_1.jpg')
->>> mp = MirrorPadding('../shape_predictor_68_face_landmarks.dat')
->>> mirror = mp.padding(img)
->>> detected = mp.detect(img, mirror)
+>>> aff = Affine('../shape_predictor_68_face_landmarks.dat')
+>>> results, faces = aff.detect_face(img, image_size)
 ```
 
