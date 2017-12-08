@@ -1,4 +1,4 @@
-# Image Processor
+# CV Tools
 
 ## [Image Augmentation](./augmentation/)
 
