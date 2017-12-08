@@ -1,0 +1,102 @@
+<!DECTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RE-ID</title>
+        <style>
+            #videoElement {
+                width: 640px;
+                height: 480px;
+                z-index: 0;
+                visibility: hidden;
+            }
+            #fakeElement {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+            #canvasElement {
+                position: absolute;
+                top: 480;
+                left: 0;
+                z-index: 2;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="fakeElement"></canvas>
+        <canvas id="canvasElement"></canvas>
+        <video autoplay="true" id="videoElement"></video>
+        <script>
+                var video = document.getElementById('videoElement');
+                var fakeCanvas = document.getElementById('fakeElement');
+                var canvas = document.getElementById('canvasElement');
+                var fakeCtx = fakeCanvas.getContext('2d');
+                var ctx = canvas.getContext('2d');
+                var localStream = null;
+                var w = video.offsetWidth;
+                var h = video.offsetHeight; 
+                var temp = null;
+                fakeCanvas.setAttribute("width", w);
+                fakeCanvas.setAttribute("height", h);
+                canvas.setAttribute("width", w);
+                canvas.setAttribute("height", h);
+
+                navigator.getUserMedia = navigator.getUserMedia || 
+                                         navigator.webkitGetUserMedia || 
+                                         navigator.mozGetUserMedia || 
+                                         navigator.msGetUserMedia || 
+                                         navigator.oGetUserMedia;
+                if (navigator.getUserMedia) {
+                    navigator.getUserMedia({video: true}, handleVideo, videoError);
+                }
+
+                function handleVideo(stream) {
+                    video.src = window.URL.createObjectURL(stream);
+                    detect();
+                }
+
+                function videoError(e) {
+                    console.error(e);
+                }
+
+                function dataURLtoBlob(dataUrl) {
+                    var arr = dataUrl.split(',');
+                    var mime = arr[0].match(/:(.*?);/)[1];
+                    var bstr = atob(arr[1]);
+                    var n = bstr.length;
+                    var u8arr = new Uint8Array(n);
+                    while(n--) {
+                        u8arr[n] = bstr.charCodeAt(n);
+                    }
+                    return new Blob([u8arr], {type: mime});
+                }
+
+                function detect() {
+                    var dataURL = fakeCanvas.toDataURL('image/jpg');
+                    var blob = dataURLtoBlob(dataURL);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "http://127.0.0.1:8888/api", true);
+                    xhr.send(blob);
+                    xhr.onload = function(e) {
+                        if(xhr.status === 200) {
+                            temp = xhr.response;
+                            var image = new Image();
+                            image.onload = function() {
+                                ctx.drawImage(image, 0, 0);
+                            };
+                            image.src = xhr.response;
+                            fakeCtx.drawImage(video, 0, 0, w, h);
+                            detect();
+                        } else {
+                            console.error("ERROR");
+                        }
+                    };
+                    xhr.onerror = function() {
+                        console.error("ERROR");
+                    };
+                }
+        </script>
+    </body>
+</html>
