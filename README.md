@@ -5,7 +5,7 @@
 ![](./augmentation/results/random_erasing.jpg)
 
 
-## [Mirror Padding](./mirror_padding/)
+## [Face Alignment](./mirror_padding/)
 
-![](./mirror_padding/results/result_1.jpg)
+![](./face_alignment/mirror_padding/results/result_1.jpg)
 

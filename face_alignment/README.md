@@ -1,8 +1,8 @@
 # Face Alignment
 
-1. Affine Transformation
+1. [Affine Transformation](./affine_transformation/)
 
-2. Mirror Padding
+2. [Mirror Padding](./mirror_padding/)
 
 
 You can download a trained facial shape predictor from:
